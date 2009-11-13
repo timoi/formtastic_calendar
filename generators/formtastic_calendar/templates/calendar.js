@@ -122,7 +122,7 @@ function date_to_string(date, format) {
   result = result.replace('%d',pad_left(date.getDate(),'0',2));
   result = result.replace('%m',pad_left(date.getMonth()+1,'0',2));
   result = result.replace('%B',calendar.month_names[date.getMonth()]);
-  result = result.replace('%b',calendar.month_names[date.getMonth()].substr(0,3));
+  result = result.replace('%b',calendar.month_names[date.getMonth()]);
   result = result.replace('%Y',date.getFullYear());
   result = result.replace('%y',(date.getFullYear()+'').substr(2));
   return result;
@@ -276,7 +276,7 @@ function calendar_update() {
   var m = calendar.month_date.getMonth();
   var y = calendar.month_date.getFullYear();
   var day1 = calendar.month_date.getDay(); // Day of week: 0..6 of first day of the month.
-  get_element('calendar_header').innerHTML = calendar.month_names[m].substr(0,3).toUpperCase()+ ' ' + y;
+  get_element('calendar_header').innerHTML = calendar.month_names[m].toUpperCase()+ ' ' + y;
   get_element('calendar_prev_month').onclick = calendar_prev_month;
   get_element('calendar_next_month').onclick = calendar_next_month;
   get_element('calendar_prev_year').onclick = calendar_prev_year;
@@ -343,7 +343,7 @@ function calendar_open(input_element, options) {
   // Set day name cells.
   var day_names = calendar.element.getElementsByTagName('tr')[1].childNodes;
   for (var i=0; i < day_names.length; i++) {
-    day_names[i].innerHTML = calendar.day_names[i].substr(0,3);
+    day_names[i].innerHTML = calendar.day_names[i];
     if ( i == 0 || i == 6)
       day_names[i].className += ' weekend';
   }
